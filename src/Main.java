@@ -26,9 +26,22 @@ public class Main {
                     animals.put(line, 1);
                 }
             }
+            String highest = "";
+            String lowest = "";
+
             for(Map.Entry<String, Integer> item : animals.entrySet()){
                 System.out.println(item.getKey() + " | " + item.getValue());
+                if(highest == ""&& lowest == ""){
+                    highest = item.getKey();
+                    lowest = item.getKey();
+                }else if(animals.get(highest) < item.getValue()){
+                    highest = item.getKey();
+                }else if (animals.get(lowest) > item.getValue()) {
+                    lowest = item.getKey();
+                }
             }
+            System.out.println("Most Seen: " + highest + " | Count: " + animals.get(highest));
+            System.out.println("Least Seen: " + lowest + " | Count: " + animals.get(lowest));
             fileScan.close();
         }catch(Exception e){
             System.out.println(e);
